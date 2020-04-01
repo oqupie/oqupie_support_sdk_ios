@@ -29,14 +29,15 @@
 - (IBAction)onOpenWebViewButtonClicked
 {
     OQAppInfo* appInfo = [[OqupieManager sharedInstance] getAppInfo];
-    [appInfo addInfo: @"234" forKey: @"userId"];
-    [appInfo addInfo: @"홍길동" forKey: @"userName"];
-    [appInfo addInfo: @"bbaram12@naver.com" forKey: @"userEmail"];
-    [appInfo addInfo: @"5f945ba071e7e66f" forKey: @"access_key"];
-    [appInfo addInfo: @"4267f442114f7efcf24a51c4a88e007b" forKey: @"secret_key"];
-    [appInfo addInfo: @"a" forKey: @"brand_key1"];
-    [appInfo addInfo: @"b" forKey: @"brand_key2"];
-    [appInfo addInfo: @"iOS 네이티브" forKey: @"게임엔진"];
+    [appInfo addInfo: @"2190ffccd8dbb478" forKey: @"access_key"];
+    [appInfo addInfo: @"dde1cc31a14524bf903b2b1e71a8afde" forKey: @"secret_key"];
+    [appInfo addInfo: @"oqupie" forKey: @"userId"];
+    [appInfo addInfo: @"Onion Pie" forKey: @"userName"];
+    [appInfo addInfo: @"example@onionfive.io" forKey: @"userEmail"];
+    [appInfo addInfo: @"ko" forKey: @"brand_key1"];
+    [appInfo addInfo: @"goodgame" forKey: @"brand_key2"];
+    [appInfo addInfo: @"asia" forKey: @"brand_key3"];
+    [appInfo addInfo: @"VVIP" forKey: @"vipcode"];
     UIColor* color = [UIColor colorWithRed: 127.0 / 255.0 green: 115.0 / 255.0 blue: 231.0 / 255.0 alpha: 1.0];
     
     [[OqupieManager sharedInstance] openWebView: self.textFieldUrl.text appInfo: appInfo showTitleBar: YES title: @"고객센터" color: color];
@@ -47,13 +48,18 @@
     OQAppInfo* appInfo = nil;
     
     appInfo = [[OqupieManager sharedInstance] getAppInfo];
-    
-    // appInfo.userId = @"1234";
-    // appInfo.userName = @"홍길동";
-    // appInfo.applicationLanguage = @"Korean";
-    // appInfo.operatingSystem = @"IOS100";
-    // [appInfo putExtra: @"iOS 네이티브" forKey: @"게임엔진"];
-    self.textViewResult.text = @"";
+    [appInfo addInfo: @"2190ffccd8dbb478" forKey: @"access_key"];
+    [appInfo addInfo: @"dde1cc31a14524bf903b2b1e71a8afde" forKey: @"secret_key"];
+    [appInfo addInfo: @"oqupie" forKey: @"userId"];
+    [appInfo addInfo: @"Onion Pie" forKey: @"userName"];
+    [appInfo addInfo: @"example@onionfive.io" forKey: @"userEmail"];
+    [appInfo addInfo: @"ko" forKey: @"brand_key1"];
+    [appInfo addInfo: @"goodgame" forKey: @"brand_key2"];
+    [appInfo addInfo: @"asia" forKey: @"brand_key3"];
+    [appInfo addInfo: @"VVIP" forKey: @"vipcode"];
+    NSString* host = @"https://oqtest.oqupie.com/portals/finder";
+    NSString* queryString = [[appInfo toQueryString] string];
+    self.textViewResult.text = [NSString stringWithFormat:@"%@%@", host, queryString];
 }
 
 @end
